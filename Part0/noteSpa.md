@@ -1,4 +1,4 @@
-:::mermaid
+```mermaid
 sequenceDiagram
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
@@ -25,5 +25,4 @@ sequenceDiagram
 
     Note right of browser: The browser executes the callback function that renders the notes
 
-
-:::
+```
