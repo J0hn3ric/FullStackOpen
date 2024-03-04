@@ -4,7 +4,7 @@ sequenceDiagram
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note;
     activate server
     Note left of server: server handles new_note and handles notes
-    server->>browser: 201 created
+    server->>browser: 302
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
