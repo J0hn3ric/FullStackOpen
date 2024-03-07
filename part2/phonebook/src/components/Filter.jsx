@@ -1,6 +1,5 @@
 import { useState } from "react"
-import Header from "./Header"
-import Inputs from "./Inputs"
+import Inputs from "./subComponents/Inputs"
 
 const Filter = ({persons, setPersFilt, setFiltered}) =>{
     const [search, setSearch] = useState('')

@@ -1,7 +1,7 @@
 import { useState } from "react"
-import Header from "./Header"
-import Inputs from "./Inputs"
-import Button from "./Button"
+import Header from "./subComponents/Header"
+import Inputs from "./subComponents/Inputs"
+import Button from "./subComponents/Button"
 
 const Form = ({persons, setPersons, setFiltered}) => {
 

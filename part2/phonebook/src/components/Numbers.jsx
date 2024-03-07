@@ -1,5 +1,5 @@
-import Header from "./Header"
-import Person from "./Person"
+import Header from "./subComponents/Header"
+import Person from "./subComponents/Person"
 
 const Numbers = ({persons, filtered, perFilt}) => {
 
