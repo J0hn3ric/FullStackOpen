@@ -1,7 +1,7 @@
 const Inputs = ({title, onChange, value}) => {
     return(
         <div>
-            {title}: <input onChange={onChange} value={value} />
+            {title}: <input name={title} onChange={onChange} value={value} />
         </div>
     )
 }

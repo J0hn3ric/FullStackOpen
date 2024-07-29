@@ -1,30 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import phoneServices from './services/phoneServices'
 import Form from './components/Form'
 import Numbers from './components/Numbers'
 import Filter from './components/Filter'
-
+import Notification from './components/Notification'
+import './css/index.css'
 
 const App = () => {
-  const [persons, setPersons] = useState([
-      { name: 'Arto Hellas', number: '040-123456', id: 1 },
-      { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
-      { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
-      { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ])
+  const [persons, setPersons] = useState([])
+
+  useEffect(() => {
+    phoneServices
+      .getAll()
+      .then(allPers => 
+        setPersons(allPers))
+  }, [])
 
   const [filtered, setFiltered] = useState(false)
 
   const [perFilt, setPersFilt] = useState(persons)
+
+  const [message, setMessage] = useState(
+    {
+      msg: null,
+      type: null
+    }
+  )
   
 
   return (
     <div>
+      <h2>Phonebook</h2>
+      <Notification message={message} />
       <Filter persons={persons} setPersFilt={setPersFilt}
-        setFiltered={setFiltered} />
+        setFiltered={setFiltered} setPerson={setPersons}/>
       <Form persons={persons} setPersons={setPersons} 
-        setFiltered={setFiltered} />
+        setFiltered={setFiltered} setMsg={setMessage}/>
       <Numbers persons={persons} filtered={filtered} 
-        perFilt={perFilt} />
+        perFilt={perFilt} setPersons={setPersons} />
     </div>
   )
 }

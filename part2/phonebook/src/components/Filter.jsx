@@ -1,7 +1,9 @@
 import { useState } from "react"
 import Inputs from "./subComponents/Inputs"
+import Button from "./subComponents/Button"
+import phoneServices from "../services/phoneServices"
 
-const Filter = ({persons, setPersFilt, setFiltered}) =>{
+const Filter = ({persons, setPersFilt, setFiltered, setPerson}) =>{
     const [search, setSearch] = useState('')
   
     const handleFilter = (event) =>{
@@ -17,14 +19,24 @@ const Filter = ({persons, setPersFilt, setFiltered}) =>{
       }
     }
   
+    const resetFilter = (event) =>{
+      event.preventDefault()
+      phoneServices
+        .getAll()
+        .then(allDatas => {
+          setPersFilt(allDatas)
+          setFiltered(false)
+        }) 
+    }
+
     return(
       <div>
-        <h2>Phonebook</h2>
         <form onSubmit={handleFilter} >
           <Inputs title='filter shown with ' 
             onChange={(event) => setSearch(event.target.value)} 
             value={search} />
         </form>
+        <Button type='button' onClick={resetFilter} text='reset' />
       </div>
     )
 }
